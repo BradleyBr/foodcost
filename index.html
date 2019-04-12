@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="./node_modules/bulma/css/bulma.css" type="text/css" rel="stylesheet">
+        <style>
+            input[type=number]::-webkit-inner-spin-button,
+            input[type=number]::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+            hr {
+                background-color: rgb(223, 223, 223);
+            }
+            
+        </style>
+    </head>
+
+    <body>
+        <div>
+            <h1 class="title">Assumptions</h1>
+            <h2 class="subtitle">Ingredient Inputs</h2><br>
+
+            <form>
+                <h3 class="subtitle">Cod</h3>
+                <input type="number" placeholder="Weight (lb)" class="input-cod-weight">
+                <input type="number" placeholder="Price" class="input-cod-price">
+                <input type="number" placeholder="Trim rate as percent" class="input-trim-rate">
+                <input type="number" placeholder="Cut fish per box" class="input-cut-fish">
+                <hr>
+                <h3 class="subtitle">Potatoes</h3>
+                <input type="number" placeholder="Weight (lb)" class="input-potato-weight">
+                <input type="number" placeholder="Price" class="input-potato-price">
+                <input type="number" placeholder="# small fries per box" class="input-potato-fries">
+                <button class="data-display">Click me</button>
+            </form>
+            
+        </div>
+    </body>
+
+    <script>
+    
+    $ = require('jquery')
+
+    $('.data-display').click((e) => {
+        e.preventDefault()
+        let codWeight = parseFloat($('.input-cod-weight').val())
+        let codPrice = parseFloat($('.input-cod-price').val())
+        let codTrim = parseFloat($('.input-trim-rate').val())
+        let cutFish = parseFloat($('.input-cut-fish').val())
+        let potatoWeight = parseFloat($('.input-potato-weight').val())
+        let potatoPrice = parseFloat($('.input-potato-price').val())
+        let potatoFries = parseFloat($('.input-potato-fries').val())
+
+        !codWeight ? localStorage.setItem('cod-weight', '') : localStorage.setItem('cod-weight', codWeight)
+        !codPrice ? localStorage.setItem('cod-price', '') : localStorage.setItem('cod-price', codPrice)
+        !codTrim ? localStorage.setItem('cod-trim', '') : localStorage.setItem('cod-trim', codTrim)
+        !cutFish ? localStorage.setItem('cut-fish', '') : localStorage.setItem('cut-fish', cutFish)
+        !potatoWeight ? localStorage.setItem('potato-weight', '') : localStorage.setItem('potato-weight', potatoWeight)
+        !potatoPrice ? localStorage.setItem('potato-price', '') : localStorage.setItem('potato-price', potatoPrice)
+        !potatoFries ? localStorage.setItem('potato-fries', '') : localStorage.setItem('potato-fries', potatoFries)
+        window.location.href = './ingredient-display.html'
+    })
+    </script>
+</html>
