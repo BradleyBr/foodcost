@@ -5,6 +5,7 @@ exports.createWindow = () => {
     win = new BrowserWindow({
         width: 1400,
         height: 1000,
+        show: false,
         webPreferences: {
             nodeIntegration: true
         }
@@ -16,5 +17,9 @@ exports.createWindow = () => {
     
     win.loadFile('./index.html')
     
-    win.webContents.openDevTools()
+    // win.webContents.openDevTools()
+
+    win.on('ready-to-show', () => {
+            win.show()
+    })
 }

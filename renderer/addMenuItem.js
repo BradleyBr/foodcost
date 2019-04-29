@@ -1,0 +1,1 @@
+localStorage.setItem('addMenuItem', JSON.stringify({item1: 'value1', item2: 'value2'}))

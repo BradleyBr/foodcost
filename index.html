@@ -11,54 +11,383 @@
             hr {
                 background-color: rgb(223, 223, 223);
             }
+            input {
+                margin-bottom: 1rem;
+            }
+            #display-page {
+                display: none;
+            }
+            #foodcost-list-page {
+                display: none;
+            }
+            .modal-content {
+                height: 400px;
+                background-color: #fafafa;
+            }
             
         </style>
     </head>
 
     <body>
-        <div>
-            <h1 class="title">Assumptions</h1>
-            <h2 class="subtitle">Ingredient Inputs</h2><br>
+        <div class="columns">
+            <div  class="column is-one-fifth">
+                    <aside class="menu">
+                            <p class="menu-label">
+                                Ingredient Pricing
+                            </p>
+                            <ul class="menu-list">
+                                <li class="input-page-button"><a>Input pricing</a></li>
+                                <li class="display-page-button"><a>Display</a></li>
+                            </ul>
+                            <p class="menu-label">
+                                Food Costing
+                            </p>
+                            <ul class="menu-list">
+                                <li class="foodcost-add-button"><a>Add Item</a></li>
+                                <li class="foodcost-list-button"><a>List of items</a></li>
+                            </ul>
+                    </aside>
+            </div>
 
-            <form>
-                <h3 class="subtitle">Cod</h3>
-                <input type="number" placeholder="Weight (lb)" class="input-cod-weight">
-                <input type="number" placeholder="Price" class="input-cod-price">
-                <input type="number" placeholder="Trim rate as percent" class="input-trim-rate">
-                <input type="number" placeholder="Cut fish per box" class="input-cut-fish">
-                <hr>
-                <h3 class="subtitle">Potatoes</h3>
-                <input type="number" placeholder="Weight (lb)" class="input-potato-weight">
-                <input type="number" placeholder="Price" class="input-potato-price">
-                <input type="number" placeholder="# small fries per box" class="input-potato-fries">
-                <button class="data-display">Click me</button>
-            </form>
-            
+            <div class="column" id="input-page">
+                <h1 class="title">Assumptions</h1>
+                <h2 class="subtitle">Ingredient Inputs</h2><br>
+    
+                <form>
+                    <h3 class="subtitle">Cod</h3>
+                    <input type="number" placeholder="Weight (lb)" class="input-cod-weight">
+                    <input type="number" placeholder="Price" class="input-cod-price">
+                    <input type="number" placeholder="Trim rate as percent" class="input-trim-rate">
+                    <input type="number" placeholder="Cut fish per box" class="input-cut-fish">
+                    <hr>
+    
+                    <h3 class="subtitle">Potatoes</h3>
+                    <input type="number" placeholder="Weight (lb)" class="input-potato-weight">
+                    <input type="number" placeholder="Price" class="input-potato-price">
+                    <input type="number" placeholder="# of small fries per box" class="input-potato-fries">
+                    <hr>
+    
+                    <h3 class="subtitle">Assorted Ingredients</h3>
+                    <p>Mayo</p>
+                    <input type="number" placeholder="Volume (litre)" class="input-mayo-weight">
+                    <input type="number" placeholder="Price" class="input-mayo-price">
+                    <p>Tartar</p>
+                    <input type="number" placeholder="Weight (litre)" class="input-tartar-weight">
+                    <input type="number" placeholder="Price" class="input-tartar-price"><br />
+                    <p>Dill</p>
+                    <input type="number" placeholder="Price" class="input-dill-price">
+                    <p>Batter (Vinegar, Baking Powder, Milk 2%)</p>
+                    <input type="number" placeholder="Price" class="input-batter-price">
+                    <p>Salt</p>
+                    <input type="number" placeholder="Price" class="input-salt-price">
+                    <p>Ketchup</p>
+                    <input type="number" placeholder="Price" class="input-ketchup-price">
+                    <p>Condiments</p>
+                    <input type="number" placeholder="Price" class="input-condiments-price">
+                    <p>Canola Oil</p>
+                    <input type="number" placeholder="Price" class="input-canola-price">
+                    <button class="form-input">Submit</button>
+                </form>
+            </div>
+
+            <div class="column" id="display-page">
+                    <div>
+                            <h1 class="title">Assumptions</h1>
+                            <h2 class="subtitle">Ingredients Display</h2><br />
+                            <h2 class="subtitle">Cod</h2>
+                            <div class="display-cod-weight"></div>
+                            <div class="display-cod-price"></div>
+                            <div class="display-cod-trim"></div>
+                            <div class="display-cod-price-individual-trimmed"></div>
+                            <div class="display-cut-fish"></div>
+                            <div class="display-cost-single-fish"></div>
+                
+                            <hr>
+                
+                            <h2 class="subtitle">Potatoes</h2>
+                            <div class="display-potato-weight"></div>
+                            <div class="display-potato-price"></div>
+                            <div class="display-potato-fries"></div>
+                
+                            <hr>
+                
+                            <h2 class="subtitle">Assorted Ingredients</h2>
+                            <p>Mayo</p>
+                            <div class="display-mayo-weight"></div>
+                            <div class="display-mayo-price"></div>
+                            <p>Tartar</p>
+                            <div class="display-tartar-weight"></div>
+                            <div class="display-tartar-price"></div>
+                            <p>Dill</p>
+                            <div class="display-dill-price"></div>
+                            <p>Batter</p>
+                            <div class="display-batter-price"></div>
+                            <p>Salt</p>
+                            <div class="display-salt-price"></div>
+                            <p>Ketchup</p>
+                            <div class="display-ketchup-price"></div>
+                            <p>Condiments</p>
+                            <div class="display-condiment-price"></div>
+                            <p>Canola Oil</p>
+                            <div class="display-canola-price"></div>
+                    </div>
+            </div>
+
+            <div class="modal" id="foodcost-menu-page">
+                <div class="modal-background"></div>
+                <div class="modal-content">
+                    <h1 class="title">Create Menu Item</h1>
+                    <p class="subtitle">Item Name</p>
+                    <input type="text" class="modal-item-title">
+                    <p class="subtitle">Menu Price</p>
+                    <input type="number" class="modal-item-price">
+                    
+                    <div class="dropdown" id="item-add-identifier">
+                        <div class="dropdown-trigger">
+                            <button class="button item-add-identifier" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Dropdown button</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                            </button>
+                        </div>
+                        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                            <div class="dropdown-content">
+                            <!-- <a href="#" class="dropdown-item">
+                                Dropdown item
+                            </a>
+                            <a class="dropdown-item">
+                                Other dropdown item
+                            </a>
+                            <a href="#" class="dropdown-item is-active">
+                                Active dropdown item
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                Other dropdown item
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                With a divider
+                            </a> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="modal-attributes">
+
+                    </div>
+
+                    <button class="modal-add-item-button">Store Button</button>
+                </div>
+                <button class="modal-close is-large"></button>
+            </div>
+
+            <div class="column" id="foodcost-list-page">
+                <div class="foodcost-list">
+
+                </div>
+            </div>
+           
         </div>
+        
     </body>
 
+    <script src="./renderer/displaySwitch.js"></script>
     <script>
     
     $ = require('jquery')
+     let inputStorageModule = require('./renderer/ingredientStorage.js'), inputStorage = new inputStorageModule
+    if (localStorage.getItem('dataObj')) {
+        inputStorage
+    }
+    
 
-    $('.data-display').click((e) => {
+    
+        
+    $('.form-input').click((e) => {
         e.preventDefault()
-        let codWeight = parseFloat($('.input-cod-weight').val())
-        let codPrice = parseFloat($('.input-cod-price').val())
-        let codTrim = parseFloat($('.input-trim-rate').val())
-        let cutFish = parseFloat($('.input-cut-fish').val())
-        let potatoWeight = parseFloat($('.input-potato-weight').val())
-        let potatoPrice = parseFloat($('.input-potato-price').val())
-        let potatoFries = parseFloat($('.input-potato-fries').val())
+        let dataObj = {
+            cod: {
+                codWeight: parseFloat($('.input-cod-weight').val()) || '', 
+                codPrice: parseFloat($('.input-cod-price').val()) || '',
+                codTrim: parseFloat($('.input-trim-rate').val()) || '',
+                cutFish: parseFloat($('.input-cut-fish').val()) || '',
+                // Hot mess of code here to get data without access to 'this' binding
+                individualFish: Number.parseFloat((((Number.parseFloat((parseFloat($('.input-cod-price').val())/(parseFloat(
+                    $('.input-cod-weight').val())*(1-(parseFloat($('.input-trim-rate').val()/100 || 0))))).toFixed(2)))*parseFloat($('.input-cod-weight').val()))/parseFloat($('.input-cut-fish').val())).toFixed(2)) || ''
+            },
+            potato: {
+                potatoWeight: parseFloat($('.input-potato-weight').val()) || '',
+                potatoPrice: parseFloat($('.input-potato-price').val()) || '',
+                potatoFries: parseFloat($('.input-potato-fries').val()) || '',
+            },
+            mayo: {
+                mayoWeight: parseFloat($('.input-mayo-weight').val()) || '',
+             mayoPrice: parseFloat($('.input-mayo-price').val()) || ''
+            },
+            tartar: {
+                tartarWeight: parseFloat($('.input-tartar-weight').val()) || '',
+                tartarPrice: parseFloat($('.input-tartar-price').val()) || ''
+            },
+            dillPrice: parseFloat($('.input-dill-price').val()) || '',
+            batterPrice: parseFloat($('.input-batter-price').val()) || '',
+            saltPrice: parseFloat($('.input-salt-price').val()) || '',
+            ketchupPrice: parseFloat($('.input-ketchup-price').val()) || '',
+            condimentPrice: parseFloat($('.input-condiments-price').val()) || '',
+            canolaPrice: parseFloat($('.input-canola-price').val()) || '',
 
-        !codWeight ? localStorage.setItem('cod-weight', '') : localStorage.setItem('cod-weight', codWeight)
-        !codPrice ? localStorage.setItem('cod-price', '') : localStorage.setItem('cod-price', codPrice)
-        !codTrim ? localStorage.setItem('cod-trim', '') : localStorage.setItem('cod-trim', codTrim)
-        !cutFish ? localStorage.setItem('cut-fish', '') : localStorage.setItem('cut-fish', cutFish)
-        !potatoWeight ? localStorage.setItem('potato-weight', '') : localStorage.setItem('potato-weight', potatoWeight)
-        !potatoPrice ? localStorage.setItem('potato-price', '') : localStorage.setItem('potato-price', potatoPrice)
-        !potatoFries ? localStorage.setItem('potato-fries', '') : localStorage.setItem('potato-fries', potatoFries)
-        window.location.href = './ingredient-display.html'
+            // otherData: [] **** USE THIS WHEN NEW NEW INGREDIENTS ARE BEING ADDED ******
+            // use objOne.objChild.filter((obj) => {return Object.keys(obj)[0] === 'key string value'}) to read from this array of objects
+        }
+        localStorage.setItem('dataObj', JSON.stringify(dataObj))
+        
+        let formInputStorage = new inputStorageModule
+        formInputStorage
+        if (displayPageSwitch) {
+        return
+    } else {
+        inputPageSwitch = false
+        displayPageSwitch = true
+    }
+
+    if (!inputPageSwitch) {
+        $('#input-page').hide()
+    }
+    if (displayPageSwitch) {
+        $('#display-page').fadeIn({duration: 700})
+    } 
     })
+
+    // Modal add attributes to item to be created
+    let dataObjStorage = JSON.parse(localStorage.getItem('dataObj')) || {cod: {}, potato: {}, mayo: {}, tartar: {}, dillPrice: '', batterPrice: '', saltPrice: '', ketchupPrice: '', condimentPrice: '', canolaPrice: ''}
+        let {
+            cod: {
+                codWeight, codPrice, codTrim, cutFish, individualFish
+            },
+            potato: {
+                potatoWeight, potatoPrice, potatoFries
+            },
+            mayo: {
+                mayoWeight, mayoPrice
+            },
+            tartar: {
+                tartarWeight, tartarPrice
+            }, dillPrice, batterPrice, saltPrice, ketchupPrice, condimentPrice, canolaPrice
+        } = dataObjStorage
+    
+
+    let localKeys = []
+    !dataObjStorage ? null : localKeys = Object.keys(dataObjStorage)
+    
+    let modalDataArray = []
+
+    // foodcost list array to propegate page
+    let foodcostListObject = JSON.parse(localStorage.getItem('foodcost-list')) || {
+        items: []
+    } 
+    localStorage.setItem('foodcost-list', JSON.stringify(foodcostListObject))
+
+    // this loop generates the attributes on the create item page, needing to set identifiers to each item as it populates the page when the script iterates the array. The script
+    // needs to add input fields to certain attributes that require further data for the item being created
+    for (i = 0; i < localKeys.length; i++) {
+        $('.dropdown-content').append(`<a class="dropdown-item dropdown-identifiers" id="dropdown-${localKeys[i]}" data-attribute="${localKeys[i]}">
+                                      ${localKeys[i]}
+                                    </a>`)
+
+        $(`a#dropdown-${localKeys[i]}`).click(function(e) {
+            // To only have one attribute of the same type to be counted for
+            if ($(`.attribute-${$(this)[0].dataset.attribute}`).length === 0) {
+                $('#modal-attributes').append(`<div class="attribute-${$(this).attr('data-attribute')}"><h2 class="attribute-${$(this).attr('data-attribute')}-title">${$(this).attr('data-attribute')}</h2></div>`)
+            }
+        
+        if (e.target.dataset.attribute === $('a#dropdown-cod').attr('data-attribute')) {
+            if ($('.attribute-cod').children().length === 1) {
+                $('.attribute-cod').append(`<p>Number of fish for order</p>
+                                            <input class="attribute-cod--input">`)
+            }       
+        }
+
+        if (e.target.dataset.attribute === $('a#dropdown-potato').attr('data-attribute')) {
+            if($('.attribute-potato').children().length === 1) {
+                $('.attribute-potato').append(`<p>Number of small fry portions for order</p>
+                                                <input class="attribute-potato--input">`)
+            }
+        }
+            
+        
+        // foodcostListObject.itemArray.push({attribute: $(this).attr('data-attribute')})
+})
+    }
+    $('.modal-add-item-button').click((e) => {
+        for (i = 0; i < $('#modal-attributes').find('div').length; i++) {
+            if ($('#modal-attributes div').find('h2')[i].textContent === 'cod') {
+                modalDataArray.push({title: $('#modal-attributes div').find('h2')[i].textContent, value: $('.attribute-cod--input').val()})
+            } else if ($('#modal-attributes div').find('h2')[i].textContent === 'potato') {
+                modalDataArray.push({title: $('#modal-attributes div').find('h2')[i].textContent, value: $('.attribute-potato--input').val()})
+            } else (
+                modalDataArray.push($('#modal-attributes div').find('h2')[i].textContent)
+            )
+            
+        }
+        foodcostListObject.items.push({title: $('.modal-item-title').val(), menuPrice: $('.modal-item-price').val(), data: modalDataArray})
+        localStorage.setItem('foodcost-list', JSON.stringify(foodcostListObject))
+    })
+
+    for (i = 0; i < foodcostListObject.items.length; i++) {
+        let foodcostListData = foodcostListObject.items[i].data
+        let foodcostItemTitle = foodcostListObject.items[i].title
+        let foodcostItemTitleHTMLClass = foodcostItemTitle.toLowerCase().replace(' ', '')
+
+
+        $('.foodcost-list').append(`<p>item: ${foodcostItemTitle}</p>
+                                    <div class="foodcost-${foodcostItemTitleHTMLClass}"><p>Menu Price: ${foodcostListObject.items[i].menuPrice}</p></div>`)
+
+        foodcostListData.forEach((e) => {
+            let foodcostHTML = $(`.foodcost-${foodcostItemTitleHTMLClass}`)
+
+            if (e.title && e.title === 'cod') {
+                $(foodcostHTML).append(`<p>Cost of fish: ${individualFish * e.value}</p>`)
+            }
+            if (e.title && e.title === 'potato') {
+                $(foodcostHTML).append(`<p>Cost of fry: ${(potatoPrice/potatoFries)*e.value}</p>`)
+            }
+            if (e === 'mayo') {
+                $(foodcostHTML).append(`<p>Cost of mayo: ${Number(mayoPrice/mayoWeight*.03).toFixed(2)}</p>`)
+            }
+            if (e === 'tartar') {
+                $(foodcostHTML).append(`<p>Cost of tartar: ${Number(tartarPrice/tartarWeight*.03).toFixed(2)}</p>`)
+            }
+            if (e === 'batterPrice') {
+                $(foodcostHTML).append(`<p>Cost of batter: ${batterPrice}</p>`)
+            }
+            if (e === 'saltPrice') {
+                $(foodcostHTML).append(`<p>Cost of salt: ${saltPrice}</p>`)
+            }
+            if (e === 'ketchupPrice') {
+                $(foodcostHTML).append(`<p>Cost of ketchup: ${ketchupPrice}</p>`)
+            }
+            if (e === 'condimentPrice') {
+                $(foodcostHTML).append(`<p>Cost of condiments: ${condimentPrice}</p>`)
+            } 
+            if (e === 'canolaPrice') {
+                $(foodcostHTML).append(`<p>Cost of canola oil: ${Number(canolaPrice/100+0.00001).toFixed(2)}</p>`)
+            }
+            
+            // if (!e.title) {
+            //    return $(`.foodcost-${foodcostItemTitleHTMLClass}`).append(`<p>${e}</p>`)
+            // }
+           
+            
+        })
+        let sumCosts = Number(individualFish * foodcostListData[0].value) + Number((potatoPrice/potatoFries)*foodcostListData[1].value) + Number(Number(mayoPrice/mayoWeight*.03).toFixed(2))
+            + Number(Number(tartarPrice/tartarWeight*.03).toFixed(2)) + Number(batterPrice) + Number(saltPrice) + Number(ketchupPrice) + Number(condimentPrice) + Number(Number(canolaPrice/100+0.00001).toFixed(2))
+        $(`.foodcost-${foodcostItemTitleHTMLClass}`).append(`<p>Total Cost: ${Number(sumCosts).toFixed(2)}</p>
+                                                             <p>food Cost: ${Number(sumCosts/Number(foodcostListObject.items[i].menuPrice)*100).toFixed(2)}%</p></br>`)
+        // for (j = 0; j < foodcostListData.length; j++) {
+        //     $(`.foodcost-${foodcostItemTitleHTMLClass}`).append(`<p>${foodcostListData[j]}</p>`)
+        // }
+    }
+
+    
     </script>
 </html>
