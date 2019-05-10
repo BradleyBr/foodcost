@@ -46,6 +46,10 @@
                                 <li class="foodcost-add-button"><a>Add Item</a></li>
                                 <li class="foodcost-list-button"><a>List of items</a></li>
                             </ul>
+                            <p class="menu-list menu-add-button">
+                                 Menu
+                            </p>
+                            
                     </aside>
             </div>
 
@@ -200,6 +204,10 @@
     if (localStorage.getItem('dataObj')) {
         inputStorage
     }
+
+    $('.menu-add-button').click((e) => {
+        window.location.href = './ingredient-display.html'
+    })
     
 
     

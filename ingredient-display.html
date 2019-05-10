@@ -6,186 +6,56 @@
             hr {
                 background-color: rgb(223, 223, 223);
             }
-            /* .display-page {
+            input[type=number]::-webkit-inner-spin-button,
+            input[type=number]::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+            hr {
+                background-color: rgb(223, 223, 223);
+            }
+            input {
+                margin-bottom: 1rem;
+            }
+            #display-page {
                 display: none;
-            } */
+            }
+            #foodcost-list-page {
+                display: none;
+            }
+            .modal-content {
+                height: 400px;
+                background-color: #fafafa;
+            }
+            
         </style>
     </head>
     <body>
-        <div>
-            <h1 class="title">Assumptions</h1>
-            <h2 class="subtitle">Ingredients Display</h2><br />
-            <h2 class="subtitle">Cod</h2>
-            <div class="display-cod-weight"></div>
-            <div class="display-cod-price"></div>
-            <div class="display-cod-trim"></div>
-            <div class="display-cod-price-individual-trimmed"></div>
-            <div class="display-cut-fish"></div>
-            <div class="display-cost-single-fish"></div>
-
-            <hr>
-
-            <h2 class="subtitle">Potatoes</h2>
-            <div class="display-potato-weight"></div>
-            <div class="display-potato-price"></div>
-            <div class="display-potato-fries"></div>
-
-            <hr>
-
-            <h2 class="subtitle">Assorted Ingredients</h2>
-            <p>Mayo</p>
-            <div class="display-mayo-weight"></div>
-            <div class="display-mayo-price"></div>
-            <p>Tartar</p>
-            <div class="display-tartar-weight"></div>
-            <div class="display-tartar-price"></div>
-            <p>Dill</p>
-            <div class="display-dill-price"></div>
-            <p>Batter</p>
-            <div class="display-batter-price"></div>
-            <p>Salt</p>
-            <div class="display-salt-price"></div>
-            <p>Ketchup</p>
-            <div class="display-ketchup-price"></div>
-            <p>Condiments</p>
-            <div class="display-condiment-price"></div>
-            <p>Canola Oil</p>
-            <div class="display-canola-price"></div>
+        <div class="display-page-button"><a>button</a></div>
+        <div class="columns is-multiline">
+            <div class="column is-6 add-content">
+                
+            </div>
+            <div class="column is-6">
+                hello
+            </div>
+            <div class="column is-6">
+                hello
+            </div>
+            <div class="column is-6">
+                hello
+            </div>
+            <div class="column is-12">
+                hello
+            </div>
+            <div class="modal" id="menu-modal-page">
+                <div class="modal-background"></div>
+                <div class="modal-content">
+                </div>
+                <button class="modal-close is-large"></button>
+            </div>
+          
         </div>
     </body>
-    <script src="./renderer/ingredientStorage.js"></script>
-    <!-- <script>
-    
-        $ = require('jquery')
-        let codWeight = localStorage.getItem('cod-weight')
-        let codPrice = localStorage.getItem('cod-price')
-        let codTrim = localStorage.getItem('cod-trim')
-        let cutFish = localStorage.getItem('cut-fish')
-        
-        let potatoWeight = localStorage.getItem('potato-weight')
-        let potatoPrice = localStorage.getItem('potato-price')
-        let potatoFries = localStorage.getItem('potato-fries')
-
-        let mayoWeight = localStorage.getItem('mayo-weight')
-        let mayoPrice = localStorage.getItem('mayo-price')
-        let tartarWeight = localStorage.getItem('tartar-weight')
-        let tartarPrice = localStorage.getItem('tartar-price')
-        let dillPrice = localStorage.getItem('dill-price')
-        let batterPrice = localStorage.getItem('batter-price')
-        let saltPrice = localStorage.getItem('salt-price')
-        let ketchupPrice = localStorage.getItem('ketchup-price')
-        let condimentPrice = localStorage.getItem('condiment-price')
-        let canolaPrice = localStorage.getItem('canola-price')
-
-        if (codTrim === null || codTrim.length === 0) {
-            codTrim = 0
-        } else {
-            codTrim = codTrim/100
-        }
-
-        let codPriceTrim = Number.parseFloat((codPrice/(codWeight*(1-codTrim))).toFixed(2))
-        let singleFishCost = Number.parseFloat(((codPriceTrim*codWeight)/cutFish).toFixed(2))
-        
-        let potatoPricePerPound = Number.parseFloat((potatoPrice/potatoWeight).toFixed(2))
-
-        let codSwitch = {
-            weight: false,
-            price: false
-        }
-
-        if (!codWeight) {
-            codSwitch.weight = false
-            $('.display-cod-weight').html('<p>No cod weight data available</p>')
-        } else {
-            codSwitch.weight = true
-            $('.display-cod-weight').html(`<p>Weight of cod (per box): ${codWeight}lbs</p>`)
-        }
-
-        if (!codPrice) {
-            codSwitch.price = false
-            $('.display-cod-price').html('<p>No pricing data available</p>')
-        } else {
-            codSwitch.price = true
-            $('.display-cod-price').html(`<p>Price of cod (per box): ${codPrice}</p>`)
-        }
-
-        if (!codTrim) {
-            $('.display-cod-trim').html('<p>No trim rate data available</p>')
-        } else {
-            $('.display-cod-trim').html(`<p>Trim rate: ${codTrim*100}%</p>`)
-        }
-
-        if (codSwitch.weight === true && codSwitch.price === true) {
-         $('.display-cod-price-individual-trimmed').html(`<p>Price of cod per lb after trim: ${codPriceTrim}</p>`)   
-        }
-
-        if (!cutFish) {
-            $('.display-cut-fish').html('<p>No cut fish per box data available</p>')
-        } else {
-            $('.display-cut-fish').html(`Cut fish per box: ${cutFish}`)
-        }
-
-        if (!singleFishCost) {
-            $('.display-cost-single-fish').html('<p>No cost of individual fish data available</p>')
-        } else {
-            $('.display-cost-single-fish').html(`<p>Cost of individual fish: ${singleFishCost}</p>`)
-        }
-
-        !potatoWeight ? 
-            $('.display-potato-weight').html('<p>No potato weight data available</p>') :
-            $('.display-potato-weight').html(`<p>Weight of potatoes (per box): ${potatoWeight}lbs</p>`)
-        
-        !potatoPrice ?
-            $('.display-potato-price').html('<p>No potato pricing data available</p>') :
-            $('.display-potato-price').html(`<p>Price of potatoes (per box): ${Number(potatoPrice).toFixed(2)}</p>`)
-        
-        potatoFries ?
-            $('.display-potato-fries').html(`<p>Amount of small fries per box: ${potatoFries}</p>
-                                             <p>Price of small fries: ${potatoPrice/potatoFries}</p>`) : null
-
-        !mayoWeight ? 
-            $('.display-mayo-weight').html('<p>No mayo volume data available</p>') :
-            $('.display-mayo-weight').html(`<p>Volume of mayo container: ${mayoWeight}</p>`)
-
-        !mayoPrice ?
-            $('display-mayo-price').html('<p>No mayo pricing data available</p>') :
-            $('.display-mayo-price').html(`<p>Price of mayo container: ${mayoPrice}</p>`)
-
-        !tartarWeight ? 
-            $('.display-tartar-weight').html('<p>No tartar volume data available</p>') :
-            $('.display-tartar-weight').html(`<p>Volume of tartar container: ${tartarWeight}</p>`)
-
-        !tartarPrice ?
-            $('display-tartar-price').html('<p>No tartar pricing data available</p>') :
-            $('.display-tartar-price').html(`<p>Price of tartar container: ${tartarPrice}</p>`)
-
-        !dillPrice ?
-            $('display-dill-price').html('<p>No dill pricing data available</p>') :
-            $('.display-dill-price').html(`<p>Price of dill container: ${dillPrice}</p>`)
-        
-        !batterPrice ?
-            $('display-batter-price').html('<p>No batter pricing data available</p>') :
-            $('.display-batter-price').html(`<p>Price of batter (Vinegar, baking powder, milk 2%) per fish fillet: ${batterPrice}</p>`)
-
-        !saltPrice ?
-            $('display-salt-price').html('<p>No salt pricing data available</p>') :
-            $('.display-salt-price').html(`<p>Price of salt per order: ${saltPrice}</p>`)
-
-        !ketchupPrice ?
-            $('display-ketchup-price').html('<p>No ketchup pricing data available</p>') :
-            $('.display-ketchup-price').html(`<p>Price of ketchup per order: ${ketchupPrice}</p>`)
-
-        !condimentPrice ?
-            $('display-condiment-price').html('<p>No condiment pricing data available</p>') :
-            $('.display-condiment-price').html(`<p>Price of condiments per order: ${condimentPrice}</p>`)    
-        
-        !canolaPrice ?
-            $('display-canola-price').html('<p>No canola oil pricing data available</p>') :
-            $('.display-canola-price').html(`<p>Price of canola oil: ${canolaPrice}</p>`)
-              
-
-        $('.data-input').click(() => {
-            window.location.href = './index.html'
-        })
-    </script> -->
+    <script src="./renderer/addMenuItem.js"></script>
 </html>
