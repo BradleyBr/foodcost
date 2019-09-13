@@ -29,6 +29,7 @@ if (containerOne.length > 0) {
                 $('.modal-content').append(`<p class="modal-content__title">${item.title}</p>
                                         <input class="modal-content__title-edit" style="display:none;" value="${item.title}">
                                         <p class="modal-content__price">Menu Price: ${item.menuPrice}</p>
+                                        <p class="modal-content__price-edit" style="display:none;">Menu Price: <input value="${item.menuPrice}"></p>
                                         <button class="modal-content__remove-item">Delete item</button>`)
                 $('.modal-content__title').click(() => {
                     $('.modal-content__title').hide()
@@ -39,8 +40,19 @@ if (containerOne.length > 0) {
                         localStorage.setItem('foodcost-list', JSON.stringify(listData))
                         $('.modal-content__title-edit').hide()
                         $('.modal-content__title').show()
-                    }) 
+                    })
                 })
+                $('.modal-content__price').click(() => {
+                    $('.modal-content__price').hide()
+                    $('.modal-content__price-edit').show()
+                    $('.modal-content__price-edit input').blur((e) => {
+                        listData.containerOne[index].menuPrice = e.target.value
+                        $('.modal-content__price').text(`Menu Price: ${e.target.value}`)
+                        localStorage.setItem('foodcost-list', JSON.stringify(listData))
+                        $('.modal-content__price-edit').hide()
+                        $('.modal-content__price').show()
+                    })
+                }) 
                 // Delete data in menu
                 $('.modal-content__remove-item').click(() => {
                     listData.containerOne = (listData.containerOne.filter((item, filterIndex) => {
@@ -72,6 +84,7 @@ if (containerTwo.length > 0) {
                 $('.modal-content').append(`<p class="modal-content__title">${item.title}</p>
                                         <input class="modal-content__title-edit" style="display:none;" value="${item.title}">
                                         <p class="modal-content__price">Menu Price: ${item.menuPrice}</p>
+                                        <p class="modal-content__price-edit" style="display:none;">Menu Price: <input value="${item.menuPrice}"></p>
                                         <button class="modal-content__remove-item">Delete item</button>`)
                 $('.modal-content__title').click(() => {
                     $('.modal-content__title').hide()
@@ -84,7 +97,17 @@ if (containerTwo.length > 0) {
                         $('.modal-content__title').show()
                     }) 
                 })
-            
+                $('.modal-content__price').click(() => {
+                    $('.modal-content__price').hide()
+                    $('.modal-content__price-edit').show()
+                    $('.modal-content__price-edit input').blur((e) => {
+                        listData.containerTwo[index].menuPrice = e.target.value
+                        $('.modal-content__price').text(`Menu Price: ${e.target.value}`)
+                        localStorage.setItem('foodcost-list', JSON.stringify(listData))
+                        $('.modal-content__price-edit').hide()
+                        $('.modal-content__price').show()
+                    })
+                })
                 // Delete data in menu
                 $('.modal-content__remove-item').click(() => {
                     listData.containerTwo = (listData.containerTwo.filter((item, filterIndex) => {
@@ -115,6 +138,7 @@ if (containerThree.length > 0) {
                 $('.modal-content').append(`<p class="modal-content__title">${item.title}</p>
                                         <input class="modal-content__title-edit" style="display:none;" value="${item.title}">
                                         <p class="modal-content__price">Menu Price: ${item.menuPrice}</p>
+                                        <p class="modal-content__price-edit" style="display:none;">Menu Price: <input value="${item.menuPrice}"></p>
                                         <button class="modal-content__remove-item">Delete item</button>`)
                 $('.modal-content__title').click(() => {
                     $('.modal-content__title').hide()
@@ -126,6 +150,17 @@ if (containerThree.length > 0) {
                         $('.modal-content__title-edit').hide()
                         $('.modal-content__title').show()
                     }) 
+                })
+                $('.modal-content__price').click(() => {
+                    $('.modal-content__price').hide()
+                    $('.modal-content__price-edit').show()
+                    $('.modal-content__price-edit input').blur((e) => {
+                        listData.containerThree[index].menuPrice = e.target.value
+                        $('.modal-content__price').text(`Menu Price: ${e.target.value}`)
+                        localStorage.setItem('foodcost-list', JSON.stringify(listData))
+                        $('.modal-content__price-edit').hide()
+                        $('.modal-content__price').show()
+                    })
                 })
                 // Delete data in menu
                 $('.modal-content__remove-item').click(() => {
@@ -157,6 +192,7 @@ if (containerFour.length > 0) {
                 $('.modal-content').append(`<p class="modal-content__title">${item.title}</p>
                                         <input class="modal-content__title-edit" style="display:none;" value="${item.title}">
                                         <p class="modal-content__price">Menu Price: ${item.menuPrice}</p>
+                                        <p class="modal-content__price-edit" style="display:none;">Menu Price: <input value="${item.menuPrice}"></p>
                                         <button class="modal-content__remove-item">Delete item</button>`)
                 $('.modal-content__title').click(() => {
                     $('.modal-content__title').hide()
@@ -168,6 +204,17 @@ if (containerFour.length > 0) {
                         $('.modal-content__title-edit').hide()
                         $('.modal-content__title').show()
                     }) 
+                })
+                $('.modal-content__price').click(() => {
+                    $('.modal-content__price').hide()
+                    $('.modal-content__price-edit').show()
+                    $('.modal-content__price-edit input').blur((e) => {
+                        listData.containerFour[index].menuPrice = e.target.value
+                        $('.modal-content__price').text(`Menu Price: ${e.target.value}`)
+                        localStorage.setItem('foodcost-list', JSON.stringify(listData))
+                        $('.modal-content__price-edit').hide()
+                        $('.modal-content__price').show()
+                    })
                 })
                 // Delete data in menu
                 $('.modal-content__remove-item').click(() => {
@@ -199,6 +246,7 @@ if (containerFive.length > 0) {
                 $('.modal-content').append(`<p class="modal-content__title">${item.title}</p>
                                         <input class="modal-content__title-edit" style="display:none;" value="${item.title}">
                                         <p class="modal-content__price">Menu Price: ${item.menuPrice}</p>
+                                        <p class="modal-content__price-edit" style="display:none;">Menu Price: <input value="${item.menuPrice}"></p>
                                         <button class="modal-content__remove-item">Delete item</button>`)
                 $('.modal-content__title').click(() => {
                     $('.modal-content__title').hide()
@@ -210,6 +258,17 @@ if (containerFive.length > 0) {
                         $('.modal-content__title-edit').hide()
                         $('.modal-content__title').show()
                     }) 
+                })
+                $('.modal-content__price').click(() => {
+                    $('.modal-content__price').hide()
+                    $('.modal-content__price-edit').show()
+                    $('.modal-content__price-edit input').blur((e) => {
+                        listData.containerFive[index].menuPrice = e.target.value
+                        $('.modal-content__price').text(`Menu Price: ${e.target.value}`)
+                        localStorage.setItem('foodcost-list', JSON.stringify(listData))
+                        $('.modal-content__price-edit').hide()
+                        $('.modal-content__price').show()
+                    })
                 })
                 // Delete data in menu
                 $('.modal-content__remove-item').click(() => {
@@ -266,6 +325,9 @@ const modalAddContent = (e) => {
     <div class="modal-add-item">
         <input placeholder="title" class="modal-add-item--title">
         <input type="number" placeholder="Menu Price" class="modal-add-item--price">
+        <div>
+            <span class="modal-attribute">title</span>
+        </div>
         <button class="modal-add-item--button">Add Item</button>
     </div>
     `)
@@ -317,10 +379,19 @@ const modalAddContent = (e) => {
         // Turn the page render into a function to update content without reloading page later
         getCurrentWindow().reload()
     })
+
+    $('.modal-attribute').click(() => {
+        if ($('.modal-attribute').hasClass('active') === false) {
+            $('.modal-attribute').addClass('active')
+            
+        } else {
+            $('.modal-attribute').removeClass('active')
+        }
+    })
 }
+
+
 
 $('.content-container-1, .content-container-2, .content-container-3, .content-container-4, .content-container-5').contextmenu((e) => {
     modalAddContent(e)
 })
-
-
